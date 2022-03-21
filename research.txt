@@ -1,0 +1,3 @@
+Using this to generate a tab from a playlist:
+
+https://tools.digitalmethods.net/netvizz/youtube/mod_videos_list.php
