@@ -1,3 +1,7 @@
 Using this to generate a tab from a playlist:
 
 https://tools.digitalmethods.net/netvizz/youtube/mod_videos_list.php
+
+Interesting methodology:
+
+https://sites.temple.edu/tudsc/2019/04/03/computational-text-analysis-of-youtube-video-transcripts/
