@@ -1,0 +1,31 @@
+from peewee import *
+
+db = SqliteDatabase('databases/responses.db')
+
+class response(Model):
+
+    firstName = CharField()
+    lastName = CharField()
+
+    postcode = CharField()
+    lift12kgs = BooleanField()
+    license = BooleanField()
+
+    email = CharField()
+    youtube = CharField()
+
+    time = DateTimeField
+
+    management = TextField()
+    transcript = TextField()
+    prediction = CharField()
+
+
+
+
+    class Meta:
+        database = db
+
+db.connect()
+
+db.create_tables([response])
