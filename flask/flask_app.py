@@ -1,3 +1,4 @@
+from flask import Flask,render_template,request
 from youtube_transcript_api import YouTubeTranscriptApi
 from peewee import *
 import datetime
@@ -29,6 +30,8 @@ class Response(Model):
 
 db.connect()
 
+# db.create_tables([Response])
+
 objecto = {"FirstName": "Jawsh",
             "FastName": "Something",
             "Postcode": 2342,
@@ -45,11 +48,11 @@ def get_transcript(urlo):
     vid = urlo.split("=")[-1]
 
 
-    response = YouTubeTranscriptApi.get_transcript(vid)
+    responser = YouTubeTranscriptApi.get_transcript(vid)
 
     stringo = ''
 
-    for thing in response:
+    for thing in responser:
         stringo += thing['text']
         stringo += ' '
 
@@ -75,10 +78,20 @@ def processo(obj):
     # transcript = "Hi",
     prediction = objecto['Prediction'])
 
-print(when)
+app = Flask(__name__)
 
-processo(objecto)
-
-# response = YouTubeTranscriptApi.get_transcript('https://www.youtube.com/watch?v=LspIeUElIFA')
-
-# print(response)
+@app.route('/hr')
+def form():
+    return render_template('form.html')
+@app.route('/data/', methods = ['POST', 'GET'])
+def data():
+    if request.method == 'GET':
+        return f"The URL /data is accessed directly. Try going to '/form' to submit form"
+    if request.method == 'POST':
+        form_data = request.form.to_dict()
+        form_data['Transcript'] = get_transcript(form_data["Youtube"])
+        processo(form_data)
+        print("\n\n\n\n\n\n\n")
+        print(type(form_data))
+        print("\n\n\n\n\n\n\n")
+        return render_template('return.html',form_data = form_data)

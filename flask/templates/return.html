@@ -1,0 +1,18 @@
+<div style="margin:auto !important; max-width:700px !important;">
+
+{% for key,value in form_data.items() %}
+<h2> {{key}}</h2>
+<p> {{value}}</p>
+{% endfor %}
+
+{% if form_data is mapping %}
+
+<h2>It's a dict!</h2>
+
+{% endif %}
+
+<h2>Transcript!</h2>
+
+<p>{{ form_data['Transcript'] }}</p>
+
+</div>

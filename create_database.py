@@ -1,8 +1,8 @@
 from peewee import *
 
-db = SqliteDatabase('databases/responses.db')
+db = SqliteDatabase('responses.db')
 
-class response(Model):
+class Response(Model):
 
     firstName = CharField()
     lastName = CharField()
@@ -12,20 +12,16 @@ class response(Model):
     license = BooleanField()
 
     email = CharField()
-    youtube = CharField()
+    link = CharField()
 
     time = DateTimeField()
 
-    management = TextField()
     transcript = TextField()
     prediction = CharField()
-
-
-
 
     class Meta:
         database = db
 
 db.connect()
 
-db.create_tables([response])
+db.create_tables([Response])
