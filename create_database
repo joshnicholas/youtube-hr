@@ -14,7 +14,7 @@ class response(Model):
     email = CharField()
     youtube = CharField()
 
-    time = DateTimeField
+    time = DateTimeField()
 
     management = TextField()
     transcript = TextField()
